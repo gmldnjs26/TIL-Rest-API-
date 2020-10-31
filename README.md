@@ -5,7 +5,6 @@
 - Vue Router
 - Vuex
 - Axios
-- Vue Test Utils
 
 ## 개발 환경
 
