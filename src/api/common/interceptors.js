@@ -20,11 +20,10 @@ export function setInterceptors(instance) {
       return response;
     },
     function(error) {
-      console.log(error)
-      if(error){
-        console.log("interceptors" + error);
-      }
-      else return Promise.reject(error);
+      console.log(error);
+      if (error) {
+        console.log('interceptors' + error);
+      } else return Promise.reject(error);
     },
   );
   return instance;

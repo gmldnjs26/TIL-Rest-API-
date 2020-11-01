@@ -7,8 +7,8 @@ import { loginUser } from '@/api/auth';
 import {
   getAuthFromCookie,
   getUserFromCookie,
-  saveAuthToCookie,
-  saveUserToCookie,
+  //saveAuthToCookie,
+  //saveUserToCookie,
 } from '@/utils/cookies.js';
 
 export default new Vuex.Store({
@@ -64,10 +64,10 @@ export default new Vuex.Store({
     Login({ commit }, userData) {
       console.log(userData);
       loginUser(userData)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => console.log("error ? " + error));
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => console.log('error ? ' + error));
     },
   },
 });

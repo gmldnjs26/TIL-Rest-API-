@@ -35,7 +35,7 @@ export default {
       logMessage: '',
     };
   },
-  methods: { 
+  methods: {
     async submitForm() {
       const userData = {
         id: this.username,
