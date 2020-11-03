@@ -61,13 +61,11 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    Login({ commit }, userData) {
-      console.log(userData);
-      loginUser(userData)
-        .then(response => {
-          console.log(response);
-        })
-        .catch(error => console.log('error ? ' + error));
+    async Login(context, userData) {
+      var response = await loginUser(userData); // from auth
+      context.commit('setUsername', response.data.usename);
+      context.commit('setToken', response.data.token);
+      return response;
     },
   },
 });

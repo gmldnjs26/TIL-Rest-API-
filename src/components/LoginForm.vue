@@ -16,6 +16,7 @@
           <input id="password" type="text" v-model="password" />
         </div>
         <button
+          :class="{ btn_disableed: !isUsernameValid || !password }"
           :disabled="!isUsernameValid || !password"
           type="submit"
           class="btn"
@@ -58,6 +59,7 @@ export default {
       } catch (error) {
         // 에러 핸들링할 코드
         console.log(error.response.data);
+        console.log('logMessage');
         this.logMessage = error.response.data;
       } finally {
         this.initForm();
@@ -74,5 +76,9 @@ export default {
 <style>
 .btn {
   color: white;
+}
+.btn_disableed {
+  color: #6e6e6e;
+  background-color: #d3d3d3;
 }
 </style>
