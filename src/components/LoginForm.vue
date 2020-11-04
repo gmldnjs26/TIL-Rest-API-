@@ -58,9 +58,7 @@ export default {
         this.$router.push('/main');
       } catch (error) {
         // 에러 핸들링할 코드
-        console.log(error.response.data);
-        console.log('logMessage');
-        this.logMessage = error.response.data;
+        this.logMessage = error.response.data.message;
       } finally {
         this.initForm();
       }
