@@ -7,8 +7,8 @@ import { loginUser } from '@/api/auth';
 import {
   getAuthFromCookie,
   getUserFromCookie,
-  //saveAuthToCookie,
-  //saveUserToCookie,
+  saveAuthToCookie,
+  saveUserToCookie,
 } from '@/utils/cookies.js';
 
 export default new Vuex.Store({
@@ -33,21 +33,6 @@ export default new Vuex.Store({
       state.token = token;
     },
     setTodoItems(state, todoItems) {
-      const arr = [
-        {
-          item: 'Vue 학습하기1',
-          completed: false,
-        },
-        {
-          item: 'Vue 학습하기2',
-          completed: false,
-        },
-        {
-          item: 'Vue 학습하기3',
-          completed: true,
-        },
-      ];
-      todoItems = arr;
       state.todoItems = todoItems;
     },
     togleOneItem(state, payload) {
@@ -65,6 +50,9 @@ export default new Vuex.Store({
       var response = await loginUser(userData); // from auth
       context.commit('setUsername', response.data.usename);
       context.commit('setToken', response.data.token);
+      saveUserToCookie(response.data.usename);
+      saveAuthToCookie(response.data.token);
+      console.log('token' + response.data.token);
       return response;
     },
   },

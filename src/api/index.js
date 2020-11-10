@@ -17,3 +17,4 @@ function createInstanceWithAuth(url) {
 
 export const instance = createInstance();
 export const posts = createInstanceWithAuth('posts');
+export const tils = createInstanceWithAuth('todoLists');
