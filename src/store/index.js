@@ -4,6 +4,8 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 import { loginUser } from '@/api/auth';
+import { fetchTIL } from '@/api/todoLists';
+
 import {
   getAuthFromCookie,
   getUserFromCookie,
