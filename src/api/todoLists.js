@@ -1,7 +1,8 @@
-import { tils } from './index.js';
+import { instance } from './index.js';
 
-function fetchTIL(username) {
-  return tils.get('selectTil', username);
+function fetchTIL(id) {
+  console.log('id' + id);
+  return instance.get('api/selectTil', id);
 }
 
 export { fetchTIL };

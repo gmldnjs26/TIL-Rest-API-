@@ -7,7 +7,6 @@ function registerUser(userData) {
 
 // 로그인 API
 function loginUser(userData) {
-  console.log(userData);
   return instance.post('api/login', userData);
 }
 

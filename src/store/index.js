@@ -4,7 +4,6 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 import { loginUser } from '@/api/auth';
-import { fetchTIL } from '@/api/todoLists';
 
 import {
   getAuthFromCookie,
@@ -22,6 +21,9 @@ export default new Vuex.Store({
   getters: {
     isLogin(state) {
       return state.username !== '';
+    },
+    getUsername(state) {
+      return state.username;
     },
     storedTodoItems(state) {
       return state.todoItems;
@@ -50,9 +52,9 @@ export default new Vuex.Store({
   actions: {
     async Login(context, userData) {
       var response = await loginUser(userData); // from auth
-      context.commit('setUsername', response.data.usename);
+      context.commit('setUsername', response.data.member.username);
       context.commit('setToken', response.data.token);
-      saveUserToCookie(response.data.usename);
+      saveUserToCookie(response.data.member.username);
       saveAuthToCookie(response.data.token);
       console.log('token' + response.data.token);
       return response;
