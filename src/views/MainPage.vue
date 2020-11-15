@@ -39,7 +39,8 @@ export default {
       console.log('Username : ' + this.$store.getters.getUsername);
       const response = await fetchTIL(this.$store.getters.getUsername);
       this.isLoading = false;
-      this.postItems = response.data.posts;
+      console.log(response.data);
+      this.postItems = response.data;
     },
   },
   created() {
