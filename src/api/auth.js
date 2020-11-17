@@ -10,4 +10,9 @@ function loginUser(userData) {
   return instance.post('api/login', userData);
 }
 
-export { registerUser, loginUser };
+// 비밀번호 양식 가져오기
+function getPasswordPattern() {
+  return instance.get('api/pwdPattern');
+}
+
+export { registerUser, loginUser, getPasswordPattern };
