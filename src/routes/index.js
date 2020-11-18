@@ -37,10 +37,6 @@ const router = new VueRouter({
       meta: { auth: true },
     },
     {
-      path: '/todoList',
-      component: () => import('@/views/MyTodoList.vue'),
-    },
-    {
       path: '*', // 위에 없는 모든 URL에 대해 반응하겠다.
       component: () => import('@/views/NotFoundPage.vue'),
     },

@@ -7,7 +7,7 @@
       {{ postItem.contents }}
     </div>
     <div class="post-time">
-      {{ postItem.createdAt | formatDate }}
+      {{ postItem.createdat | formatDate }}
       <i class="icon ion-md-create" v-on:click="routeEditPage"></i>
       <i class="icon ion-md-trash" v-on:click="deleteItem"></i>
     </div>
@@ -18,6 +18,9 @@
 import { deletePost } from '@/api/posts.js';
 
 export default {
+  mounted() {
+    console.log(this.postItem.createdat);
+  },
   props: {
     postItem: {
       type: Object,
