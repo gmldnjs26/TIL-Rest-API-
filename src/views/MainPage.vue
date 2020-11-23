@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { fetchTIL } from '@/api/todoLists';
+import { fetchTILS } from '@/api/todoLists';
 import PostListItem from '@/components/posts/PostListItem.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 export default {
@@ -36,11 +36,10 @@ export default {
   methods: {
     async fetchData() {
       this.isLoading = true;
-      console.log('Username : ' + this.$store.getters.getUsername);
-      const response = await fetchTIL(this.$store.getters.getUsername);
+      const response = await fetchTILS(this.$store.getters.getUsername);
       this.isLoading = false;
-      console.log(response.data);
       this.postItems = response.data;
+      this.$store.commit('setTodoItems', response.data);
     },
   },
   created() {

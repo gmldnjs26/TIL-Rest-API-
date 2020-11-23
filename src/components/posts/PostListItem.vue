@@ -18,20 +18,22 @@
 import { deletePost } from '@/api/posts.js';
 
 export default {
-  mounted() {
-    console.log(this.postItem.createdat);
-  },
+  mounted() {},
   props: {
     postItem: {
       type: Object,
       required: true,
     },
   },
-  // filters: {
-  //   formatDate(value) {
-  //     return new Date(value);
-  //   },
-  // },
+  filters: {
+    formatDate(value) {
+      return new Date(
+        value.substring(0, 4),
+        value.substring(4, 6),
+        value.substring(6, 8),
+      );
+    },
+  },
   methods: {
     async deleteItem() {
       if (confirm('Do you want to delete it?')) {
@@ -40,7 +42,13 @@ export default {
       }
     },
     routeEditPage() {
-      const id = this.postItem._id;
+      const id = this.postItem.id;
+      // const til = {
+      //   id: this.postItem._id,
+      //   title: this.postItem.title,
+      //   contents: this.postItem.contents,
+      //   tilno: this.postItem.tilno,
+      // };
       this.$router.push(`/post/${id}`);
     },
   },

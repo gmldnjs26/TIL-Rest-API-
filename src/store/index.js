@@ -37,6 +37,7 @@ export default new Vuex.Store({
       state.token = token;
     },
     setTodoItems(state, todoItems) {
+      console.log(todoItems);
       state.todoItems = todoItems;
     },
     togleOneItem(state, payload) {

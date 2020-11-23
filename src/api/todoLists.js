@@ -1,7 +1,7 @@
 import { instance } from './index.js';
 // import qs from 'qs';
 
-function fetchTIL(username) {
+function fetchTILS(username) {
   return instance.get('api/selectTil', {
     params: {
       id: username,
@@ -10,4 +10,6 @@ function fetchTIL(username) {
   });
 }
 
-export { fetchTIL };
+// 하나의 TodoList 가져오기
+
+export { fetchTILS };

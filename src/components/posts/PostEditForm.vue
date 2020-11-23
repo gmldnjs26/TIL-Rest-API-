@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { fetchPost, editPost } from '@/api/posts.js';
+import { editPost } from '@/api/posts.js';
 
 export default {
   data() {
@@ -57,11 +57,8 @@ export default {
       }
     },
   },
-  async created() {
-    const id = this.$router.paramse.id;
-    const { data } = await fetchPost(id);
-    this.title = data.title;
-    this.contents = data.contents;
+  created() {
+    console.log(this.$router.params);
   },
 };
 </script>
