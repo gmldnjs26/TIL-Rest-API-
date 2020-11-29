@@ -58,7 +58,7 @@ export default {
     },
   },
   created() {
-    console.log(this.$router.params);
+    console.log(this.$router.currentRoute.params.id);
   },
 };
 </script>

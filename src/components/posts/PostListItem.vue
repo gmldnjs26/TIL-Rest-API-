@@ -42,7 +42,7 @@ export default {
       }
     },
     routeEditPage() {
-      const id = this.postItem.id;
+      const id = this.postItem.tilno;
       // const til = {
       //   id: this.postItem._id,
       //   title: this.postItem.title,

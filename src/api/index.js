@@ -2,9 +2,14 @@ import axios from 'axios';
 import { setInterceptors } from './common/interceptors';
 
 function createInstance() {
-  return axios.create({
+  const ins = axios.create({
     baseURL: process.env.VUE_APP_API_URL,
+    // headers: {
+    //   'Access-Control-Allow-Origin': '*',
+    //   'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    // },
   });
+  return setInterceptors(ins);
 }
 
 // 인
