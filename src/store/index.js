@@ -37,8 +37,12 @@ export default new Vuex.Store({
       state.token = token;
     },
     setTodoItems(state, todoItems) {
-      console.log(todoItems);
-      state.todoItems = todoItems;
+      var map = new Map();
+      todoItems.forEach(element => {
+        map.set(element.tilno, element);
+      });
+      state.todoItems = map;
+      console.log(map);
     },
     togleOneItem(state, payload) {
       console.log(payload.todoItem, payload.index);

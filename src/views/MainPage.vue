@@ -4,12 +4,12 @@
       <h1 class="page-header">Today I Learned</h1>
       <LoadingSpinner v-if="isLoading"></LoadingSpinner>
       <ul v-else>
-        <PostListItem
-          v-for="postItem in postItems"
-          :key="postItem._id"
-          :postItem="postItem"
+        <TodoList
+          v-for="til in todoLists"
+          :key="til._id"
+          :til="til"
           v-on:refresh="fetchData"
-        ></PostListItem>
+        ></TodoList>
       </ul>
     </div>
     <router-link to="/add" class="create-button">
@@ -20,16 +20,16 @@
 
 <script>
 import { fetchTILS } from '@/api/todoLists';
-import PostListItem from '@/components/posts/PostListItem.vue';
+import TodoList from '@/components/posts/TodoList.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 export default {
   components: {
-    PostListItem,
+    TodoList,
     LoadingSpinner,
   },
   data() {
     return {
-      postItems: [],
+      todoLists: [],
       isLoading: false,
     };
   },
@@ -38,7 +38,7 @@ export default {
       this.isLoading = true;
       const response = await fetchTILS(this.$store.getters.getUsername);
       this.isLoading = false;
-      this.postItems = response.data;
+      this.todoLists = response.data;
       this.$store.commit('setTodoItems', response.data);
     },
   },

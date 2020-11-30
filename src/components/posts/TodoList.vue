@@ -1,13 +1,13 @@
 <template>
   <li>
     <div class="post-title">
-      {{ postItem.title }}
+      {{ til.title }}
     </div>
     <div class="post-contents">
-      {{ postItem.contents }}
+      {{ til.contents }}
     </div>
     <div class="post-time">
-      {{ postItem.createdat | formatDate }}
+      {{ til.createdat | formatDate }}
       <i class="icon ion-md-create" v-on:click="routeEditPage"></i>
       <i class="icon ion-md-trash" v-on:click="deleteItem"></i>
     </div>
@@ -20,7 +20,7 @@ import { deletePost } from '@/api/posts.js';
 export default {
   mounted() {},
   props: {
-    postItem: {
+    til: {
       type: Object,
       required: true,
     },
@@ -42,7 +42,7 @@ export default {
       }
     },
     routeEditPage() {
-      const id = this.postItem.tilno;
+      const id = this.til.tilno;
       // const til = {
       //   id: this.postItem._id,
       //   title: this.postItem.title,

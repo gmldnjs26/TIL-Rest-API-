@@ -58,7 +58,10 @@ export default {
     },
   },
   created() {
-    console.log(this.$router.currentRoute.params.id);
+    var tilno = this.$router.currentRoute.params.id;
+    var todoLists = this.$store.getters.storedTodoItems;
+    this.title = todoLists.get(Number(tilno)).title;
+    this.contents = todoLists.get(Number(tilno)).contents;
   },
 };
 </script>

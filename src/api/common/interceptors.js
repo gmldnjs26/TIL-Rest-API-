@@ -13,7 +13,6 @@ export function setInterceptors(instance) {
       return Promise.reject(error);
     },
   );
-
   // Add a response interceptor
   instance.interceptors.response.use(
     function(response) {
