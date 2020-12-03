@@ -27,11 +27,12 @@
 </template>
 
 <script>
-import { editPost } from '@/api/posts.js';
+import { updateTIL } from '@/api/todoLists.js';
 
 export default {
   data() {
     return {
+      tilno: '',
       title: '',
       contents: '',
       logMessage: '',
@@ -45,8 +46,8 @@ export default {
   methods: {
     async submitForm() {
       try {
-        const id = this.$router.params.id;
-        await editPost(id, {
+        await updateTIL({
+          tilno: this.tilno,
           title: this.title,
           contents: this.contents,
         });
@@ -58,10 +59,10 @@ export default {
     },
   },
   created() {
-    var tilno = this.$router.currentRoute.params.id;
+    this.tilno = this.$router.currentRoute.params.id;
     var todoLists = this.$store.getters.storedTodoItems;
-    this.title = todoLists.get(Number(tilno)).title;
-    this.contents = todoLists.get(Number(tilno)).contents;
+    this.title = todoLists.get(Number(this.tilno)).title;
+    this.contents = todoLists.get(Number(this.tilno)).contents;
   },
 };
 </script>

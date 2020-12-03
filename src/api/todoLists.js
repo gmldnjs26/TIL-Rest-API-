@@ -10,6 +10,10 @@ function fetchTILS(username) {
   });
 }
 
+function updateTIL(til) {
+  return instance.post('api/updateTil', til);
+}
+
 // 하나의 TodoList 가져오기
 
-export { fetchTILS };
+export { fetchTILS, updateTIL };
