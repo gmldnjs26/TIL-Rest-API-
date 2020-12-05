@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { createPost } from '@/api/posts';
+import { createTIL } from '@/api/todoLists';
 
 export default {
   data() {
@@ -45,9 +45,11 @@ export default {
   methods: {
     async submitForm() {
       try {
-        const response = await createPost({
+        const response = await createTIL({
+          id: this.$store.getters.getUsername,
           title: this.title,
           contents: this.contents,
+          createdat: '20201205',
         });
         this.$router.push('/main');
         console.log(response);

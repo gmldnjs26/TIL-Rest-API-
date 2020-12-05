@@ -18,6 +18,13 @@
           </p>
         </div>
         <button type="submit" class="btn">Edit</button>
+        <button
+          type="button"
+          class="btn btncln"
+          @click.prevent="this.$router.go(-1)"
+        >
+          Cancel
+        </button>
       </form>
       <p class="log">
         {{ logMessage }}
@@ -47,7 +54,7 @@ export default {
     async submitForm() {
       try {
         await updateTIL({
-          tilno: this.tilno,
+          tilno: Number(this.tilno),
           title: this.title,
           contents: this.contents,
         });
@@ -73,5 +80,8 @@ export default {
 }
 .btn {
   color: white;
+}
+.btncln {
+  margin-left: 15px;
 }
 </style>

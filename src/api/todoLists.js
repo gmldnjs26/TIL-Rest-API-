@@ -14,6 +14,10 @@ function updateTIL(til) {
   return instance.post('api/updateTil', til);
 }
 
+function createTIL(til) {
+  return instance.post('api/insertTil', til);
+}
+
 // 하나의 TodoList 가져오기
 
-export { fetchTILS, updateTIL };
+export { fetchTILS, updateTIL, createTIL };
