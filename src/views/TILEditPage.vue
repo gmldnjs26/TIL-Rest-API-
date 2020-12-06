@@ -1,14 +1,14 @@
 <template>
   <div class="fomr-container">
-    <PostEditForm></PostEditForm>
+    <TILEditForm></TILEditForm>
   </div>
 </template>
 
 <script>
-import PostEditForm from '@/components/posts/PostEditForm.vue';
+import TILEditForm from '@/components/tils/TILEditForm.vue';
 export default {
   components: {
-    PostEditForm,
+    TILEditForm,
   },
 };
 </script>

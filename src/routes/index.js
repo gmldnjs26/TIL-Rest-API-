@@ -28,12 +28,12 @@ const router = new VueRouter({
     },
     {
       path: '/add',
-      component: () => import('@/views/PostAddPage.vue'),
+      component: () => import('@/views/TILAddPage.vue'),
       meta: { auth: true },
     },
     {
-      path: '/post/:id',
-      component: () => import('@/views/PostEditPage.vue'),
+      path: '/til/:id',
+      component: () => import('@/views/TILEditPage.vue'),
       meta: { auth: true },
     },
     {

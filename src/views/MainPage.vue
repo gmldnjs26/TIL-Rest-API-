@@ -13,14 +13,14 @@
       </ul>
     </div>
     <router-link to="/add" class="create-button">
-      <i class="fas fa-plus"></i>
+      ✚
     </router-link>
   </div>
 </template>
 
 <script>
 import { fetchTILS } from '@/api/todoLists';
-import TodoList from '@/components/posts/TodoList.vue';
+import TodoList from '@/components/tils/TodoList.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 export default {
   components: {

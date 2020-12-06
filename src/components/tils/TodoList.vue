@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { deletePost } from '@/api/posts.js';
+import { deleteTIL } from '@/api/todoLists';
 
 export default {
   mounted() {},
@@ -37,19 +37,16 @@ export default {
   methods: {
     async deleteItem() {
       if (confirm('Do you want to delete it?')) {
-        await deletePost(this.postItem._id);
+        await deleteTIL({
+          id: this.$store.getters.getUsername,
+          tilno: this.til.tilno,
+        });
         this.$emit('refresh');
       }
     },
     routeEditPage() {
       const id = this.til.tilno;
-      // const til = {
-      //   id: this.postItem._id,
-      //   title: this.postItem.title,
-      //   contents: this.postItem.contents,
-      //   tilno: this.postItem.tilno,
-      // };
-      this.$router.push(`/post/${id}`);
+      this.$router.push(`/til/${id}`);
     },
   },
 };

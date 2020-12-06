@@ -1,6 +1,6 @@
 <template>
   <div class="contents">
-    <h1 class="page-header">Edit Post</h1>
+    <h1 class="page-header">Create TIL</h1>
     <div class="form-wrapper">
       <form class="form" @submit.prevent="submitForm">
         <div>
@@ -17,12 +17,8 @@
             Contents length must be less than 250
           </p>
         </div>
-        <button type="submit" class="btn">Edit</button>
-        <button
-          type="button"
-          class="btn btncln"
-          @click.prevent="this.$router.go(-1)"
-        >
+        <button type="submit" class="btn">Create</button>
+        <button class="btn btncln" @click.prevent="$router.go(-1)">
           Cancel
         </button>
       </form>
@@ -34,12 +30,11 @@
 </template>
 
 <script>
-import { updateTIL } from '@/api/todoLists.js';
+import { createTIL } from '@/api/todoLists';
 
 export default {
   data() {
     return {
-      tilno: '',
       title: '',
       contents: '',
       logMessage: '',
@@ -53,23 +48,19 @@ export default {
   methods: {
     async submitForm() {
       try {
-        await updateTIL({
-          tilno: Number(this.tilno),
+        const response = await createTIL({
+          id: this.$store.getters.getUsername,
           title: this.title,
           contents: this.contents,
+          createdat: '20201205',
         });
         this.$router.push('/main');
+        console.log(response);
       } catch (error) {
-        console.log(error);
-        this.logMessage = error;
+        console.log(error.response.data.message);
+        this.logMessage = error.response.data.message;
       }
     },
-  },
-  created() {
-    this.tilno = this.$router.currentRoute.params.id;
-    var todoLists = this.$store.getters.storedTodoItems;
-    this.title = todoLists.get(Number(this.tilno)).title;
-    this.contents = todoLists.get(Number(this.tilno)).contents;
   },
 };
 </script>

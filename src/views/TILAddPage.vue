@@ -1,14 +1,14 @@
 <template>
   <div class="form-container">
-    <PostAddForm></PostAddForm>
+    <TILAddForm></TILAddForm>
   </div>
 </template>
 
 <script>
-import PostAddForm from '@/components/posts/PostAddForm.vue';
+import TILAddForm from '@/components/tils/TILAddForm.vue';
 export default {
   components: {
-    PostAddForm,
+    TILAddForm,
   },
 };
 </script>
